@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Campus Information Collector</title>
+		
+	<!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   
+</head>
+	<body>
+        <img src="static/images/logo2.png" align="right" style="max-width:100%; object-fit: contain;" />
+		<br>
+		<br>
+        <br>
+        <br>
+        <br>
+        <H1>Campus Information Collector</H1>
+        <hr>
+    
+        <table class="table table-bordered border-secondary table-striped table-hover">
+        <caption class="caption-top fs-5"><a href="{{ url_for('new')}}">Create New</a></caption>
+        <div class="input-group rounded">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+            <thead class="table-light">
+
+            <tr>
+                <th class="text-start">Name</th>
+                <th class="text-start">Type</th>
+                <th class="text-start">Value</th>
+                <th class="text-start">Term</th>
+                <th class="text-start">Year</th>
+                <th class="text-start">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for row in output_data %} 
+                <form action="edit" method="post">
+                    <tr>
+                        <td class="text-start d-none">
+                            <input type="text" value="{{row[0]}}" name="id_input">
+                        </td>
+                        <td class="text-start">{{row[1]}}</td>
+                        <td class="text-start">{{row[2]}}</td>
+                        <td class="text-start">{{row[3]}}</td>
+                        <td class="text-start">{{row[4]}}</td>
+                        <td class="text-start">{{row[5]}}</td>
+                        <td class="text-start col-1">
+                            <input type="submit" value="Edit" name="submit_button" class="btn btn-secondary btn-sm w-auto mt-0 mb-0"/>
+                        </td
+                    </tr>
+                </form>
+                {% endfor %}        
+            </tbody>
+        </table>
+	</body>
+</html>
